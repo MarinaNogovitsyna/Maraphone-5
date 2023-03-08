@@ -5,7 +5,8 @@ let time = 0
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
 let score = 0
-
+const colors = ['#d98989', '#89b7d9', '#d2d989',
+'#89cad9', '#b6d989']
 
 // Переход на страницу ниже:
 startBtn.addEventListener('click', (event) => {
@@ -71,7 +72,7 @@ function createRandomCircle(){
     circle.style.height = `${size}px`
     circle.style.top = `${y}px`
     circle.style.left = `${x}px`
-    
+    setColor(circle)
 
     board.append(circle)
 }
@@ -80,4 +81,16 @@ function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min)
 }
 
+
+function setColor(element) {
+    const color = getRandomColor()
+    element.style.backgroundColor = color
+}
+
+
+
+function getRandomColor() {
+   const index = Math.floor(Math.random() * colors.length)
+   return colors[index]
+}
 
